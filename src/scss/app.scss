@@ -1,0 +1,43 @@
+html, body, #app, #app>div{
+  height: 100%;
+}
+
+.side, .map-view{
+  height: 95%;
+}
+
+body {
+  background-color: #fefefe;
+  text-align: center;
+
+  // .navbar {
+  //   background: #21374b;
+  //   color: #e7dacb;
+  //   height: 50px;
+  // }
+
+  // .navbar-item  * {
+  //   color: #e7dacb;
+  // }
+
+  // h1 {
+  //   font-size: 40px;
+  //   margin-top: 30px;
+  // }
+
+  // .container {
+  //   background-color: aqua;
+  // }
+}
+
+.map-view{
+  width: 80%;
+  display: inline-block;
+}
+
+.side{
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: azure
+}

@@ -1,0 +1,33 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "An Electron app made with React and OpenLayers",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "serve": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build --public-url . index.html"
+  },
+  "author": "Ali Nosrati",
+  "license": "ISC",
+  "repository": {
+    "type":"git",
+    "url": "https://github.com/alino20/layer-viewer.git"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.4.0",
+    "@material-ui/icons": "^4.2.1",
+    "electron": "^6.0.2",
+    "node-sass": "^4.12.0",
+    "ol": "^5.1.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-swipeable-views": "^0.13.3",
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
+}
