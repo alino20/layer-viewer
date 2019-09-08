@@ -2,7 +2,12 @@ import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
 import { OSM, Vector as VectorSource, XYZ } from "ol/source.js";
 import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style.js";
 import Point from "ol/geom/Point";
-import { TOGGLE_LAYER, REMOVE_LAYER } from "../actions/actions-layer";
+import {
+  TOGGLE_LAYER,
+  REMOVE_LAYER,
+  ADD_LAYER,
+  LOAD_LAYER
+} from "../actions/actions-layer";
 
 export default function(state = null, action) {
   switch (action.type) {
@@ -13,10 +18,21 @@ export default function(state = null, action) {
         }
         return layer;
       });
+      
     case REMOVE_LAYER:
       return state.filter((_layer, index) => {
         return action.payload != index;
       });
+
+      case LOAD_LAYER:
+        console.log("LOADING_LAYER");
+        return state;
+
+    case ADD_LAYER:
+      console.log(ADD_LAYER);
+      const cloneLayers = [...state];
+      cloneLayers.push(action.payload);
+      return cloneLayers;
 
     default:
       return [
@@ -24,12 +40,14 @@ export default function(state = null, action) {
           id: 1,
           visible: true,
           source: new OSM(),
-          title: "OSM"
+          title: "OSM",
+          removeable: false
         }),
         new VectorLayer({
           id: 2,
           title: "User Layer",
           visible: true,
+          removeable: false,
           source: new VectorSource({
             features: []
           }),

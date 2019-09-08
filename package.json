@@ -12,22 +12,30 @@
   "author": "Ali Nosrati",
   "license": "ISC",
   "repository": {
-    "type":"git",
+    "type": "git",
     "url": "https://github.com/alino20/layer-viewer.git"
   },
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "@material-ui/icons": "^4.2.1",
+    "axios": "^0.19.0",
     "electron": "^6.0.2",
+    "next": "^9.0.5",
     "node-sass": "^4.12.0",
     "ol": "^5.1.2",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-file-drop": "^0.2.8",
     "react-redux": "^7.1.1",
     "react-swipeable-views": "^0.13.3",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "shpjs": "^3.4.3"
   },
   "devDependencies": {
+    "@types/shpjs": "^3.4.0",
     "parcel-bundler": "^1.12.3"
   }
 }

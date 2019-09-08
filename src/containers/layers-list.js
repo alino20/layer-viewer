@@ -1,6 +1,6 @@
 import React from "react";
 import List from "@material-ui/core/List";
-import ListSubheader from '@material-ui/core/ListSubheader';
+import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -22,7 +22,7 @@ class LayersList extends React.Component {
       <List className="side" subheader={<ListSubheader>Layers</ListSubheader>}>
         {this.props.layers.map((layer, index) => {
           const labelId = `checkbox-list-label-${index}`;
-
+          console.log(layer);
           return (
             <ListItem
               key={index}
@@ -42,9 +42,15 @@ class LayersList extends React.Component {
               </ListItemIcon>
               <ListItemText id={labelId} primary={layer.get("title")} />
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete" onClick={() => this.props.removeLayer(index)}>
-                  <DeleteIcon />
-                </IconButton>
+                {layer.get("removeable") && (
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => this.props.removeLayer(index)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                )}
               </ListItemSecondaryAction>
             </ListItem>
           );

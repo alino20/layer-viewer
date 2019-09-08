@@ -1,8 +1,8 @@
-html, body, #app, #app>div{
+html, body, #app, #app>div, .file-drop-target, .map-view{
   height: 100%;
 }
 
-.side, .map-view{
+.side, .file-drop{
   height: 95%;
 }
 
@@ -30,7 +30,7 @@ body {
   // }
 }
 
-.map-view{
+.file-drop{
   width: 80%;
   display: inline-block;
 }

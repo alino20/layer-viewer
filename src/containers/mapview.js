@@ -2,20 +2,29 @@ import { Map, View } from "ol";
 import Feature from "ol/Feature";
 import WKT from "ol/format/WKT";
 import Point from "ol/geom/Point";
-import {Group as LayerGroup, Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
+import {
+  Group as LayerGroup,
+  Tile as TileLayer,
+  Vector as VectorLayer
+} from "ol/layer.js";
 import "ol/ol.css";
 import { OSM, Vector as VectorSource, XYZ } from "ol/source.js";
+import GeoJSON from 'ol/format/GeoJSON.js';
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { toggleLayer, removeLayer } from "../actions/actions-layer";
+import {createLayer, toggleLayer, removeLayer, addLayer } from "../actions/actions-layer";
+import FileDrop from "react-file-drop";
+import shp from 'shpjs';
 
 class MapView extends React.Component {
   render() {
     return (
-      <div className={"map-view"} ref="mapContainer">
-        {" "}
-      </div>
+      <FileDrop onDrop={this.props.createLayer}>
+        <div className={"map-view"} ref="mapContainer">
+          {" "}
+        </div>
+      </FileDrop>
     );
   }
 
@@ -101,8 +110,9 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      toggleLayer: toggleLayer,
-      removeLayer: removeLayer
+      // toggleLayer: toggleLayer,
+      // removeLayer: removeLayer,
+      createLayer: createLayer
     },
     dispatch
   );

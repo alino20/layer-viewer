@@ -1,5 +1,5 @@
 import React from "react";
-import MapView from "./mapview";
+import MapView from "../containers/mapview";
 import TabPanel from "./tab-panel";
 import LayersList from "../containers/layers-list";
 
