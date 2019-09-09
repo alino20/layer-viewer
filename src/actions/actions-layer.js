@@ -9,6 +9,8 @@ export const ADD_LAYER = "ADD_LAYER";
 export const TOGGLE_LAYER = "TOGGLE_LAYER";
 export const REMOVE_LAYER = "REMOVE_LAYER";
 
+export const ZOOM_TO_EXTENT = "ZOOM_TO_EXTENT";
+
 export function loadLayer() {
   return {
     type: LOAD_LAYER
@@ -19,9 +21,6 @@ export function createLayer(files, event) {
   return function(dispatch) {
     dispatch(loadLayer());
 
-    console.log(files, event);
-    console.log(files[0]);
-
     let reader = new FileReader();
     reader.onload = function() {
       console.log("DONE");
@@ -31,8 +30,8 @@ export function createLayer(files, event) {
           geoJSON => {
             console.log(geoJSON);
             let vectorSource = new VectorSource({
-              features: (new GeoJSON()).readFeatures(geoJSON,{
-                featureProjection: 'EPSG:3857'
+              features: new GeoJSON().readFeatures(geoJSON, {
+                featureProjection: "EPSG:3857"
               })
             });
 
@@ -43,7 +42,7 @@ export function createLayer(files, event) {
             });
           },
           error => {
-            console.log(er);
+            console.log(error);
           }
         )
         .then(layer => {
@@ -64,9 +63,6 @@ export function createLayer(files, event) {
 }
 
 export function addLayer(layer) {
-
-  console.log(layer);
-
   return {
     type: ADD_LAYER,
     payload: layer
@@ -84,5 +80,12 @@ export function removeLayer(index) {
   return {
     type: REMOVE_LAYER,
     payload: index
+  };
+}
+
+export function zoomToExtent(extent) {
+  return {
+    type: ZOOM_TO_EXTENT,
+    payload: extent
   };
 }

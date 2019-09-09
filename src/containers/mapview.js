@@ -9,13 +9,13 @@ import {
 } from "ol/layer.js";
 import "ol/ol.css";
 import { OSM, Vector as VectorSource, XYZ } from "ol/source.js";
-import GeoJSON from 'ol/format/GeoJSON.js';
+import GeoJSON from "ol/format/GeoJSON.js";
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import {createLayer, toggleLayer, removeLayer, addLayer } from "../actions/actions-layer";
+import { createLayer, zoomToExtent } from "../actions/actions-layer";
 import FileDrop from "react-file-drop";
-import shp from 'shpjs';
+import shp from "shpjs";
 
 class MapView extends React.Component {
   render() {
@@ -60,8 +60,6 @@ class MapView extends React.Component {
       })
     });
 
-    // map.addControl(new MousePosition())
-
     // save map and layer references to local state
     this.setState({
       map: map,
@@ -78,6 +76,10 @@ class MapView extends React.Component {
         layers: this.props.layers
       })
     );
+
+    if (this.props.extent != null) {
+      this.state.map.getView().fit(this.props.extent);
+    }
   }
 
   handleMapClick(event) {
@@ -103,16 +105,16 @@ class MapView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    layers: state.layers
+    layers: state.layers,
+    extent: state.extent
   };
 }
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      // toggleLayer: toggleLayer,
-      // removeLayer: removeLayer,
-      createLayer: createLayer
+      createLayer: createLayer,
+      zoomToExtent: zoomToExtent
     },
     dispatch
   );
