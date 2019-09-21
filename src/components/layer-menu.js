@@ -32,6 +32,7 @@ export default function LayerMenu(props) {
       >
         <MoreVertIcon />
       </IconButton>
+
       <Menu
         id="long-menu"
         anchorEl={anchorEl}
@@ -48,7 +49,17 @@ export default function LayerMenu(props) {
         <MenuItem
           onClick={() => {
             if (props.layer instanceof VectorLayer) {
-              props.zoomToExtent(props.layer.getSource().getExtent());
+              if (props.layer.getSource().getFeatures().length > 0) {
+                let extent = props.layer.getSource().getExtent();
+                props.zoomToExtent(extent);
+              } else {
+                props.zoomToExtent([
+                  -10013188.195,
+                  -10024483.05,
+                  10013188.195,
+                  10024483.05
+                ]);
+              }
             } else {
               props.zoomToExtent(props.layer.getExtent());
             }
