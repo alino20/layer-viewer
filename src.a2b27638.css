@@ -253,22 +253,12 @@
 html, body, #app, #app > div, .file-drop-target, .map-view {
   height: 100%; }
 
-.side, .file-drop {
-  height: 95%; }
+.file-drop {
+  height: 100%; }
 
 body {
   background-color: #fefefe;
   text-align: center; }
-
-.file-drop {
-  width: 80%;
-  display: inline-block; }
-
-.side {
-  width: 20%;
-  display: inline-block;
-  vertical-align: top;
-  background-color: azure; }
 
 
 /*# sourceMappingURL=/src.a2b27638.css.map */
