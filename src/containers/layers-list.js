@@ -40,6 +40,7 @@ const LayersList = props => {
                   tabIndex={-1}
                   inputProps={{ "aria-labelledby": labelId }}
                   onClick={() => props.toggleLayer(index)}
+                  color='primary'
                 />
               </ListItemIcon>
               <ListItemText id={labelId} primary={layer.get("title")} />

@@ -1,13 +1,8 @@
-import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
-import { OSM, Vector as VectorSource, XYZ } from "ol/source.js";
-import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style.js";
 import Point from "ol/geom/Point";
-import {
-  TOGGLE_LAYER,
-  REMOVE_LAYER,
-  ADD_LAYER,
-  LOAD_LAYER
-} from "../actions/actions-layer";
+import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
+import { OSM, Vector as VectorSource } from "ol/source.js";
+import { Circle as CircleStyle, Fill, Style } from "ol/style.js";
+import { ADD_LAYER, LOAD_LAYER, REMOVE_LAYER, TOGGLE_LAYER } from "../actions/actions-layer";
 
 export default function(state = null, action) {
   if (state === null) {
@@ -22,6 +17,7 @@ export default function(state = null, action) {
       }),
       new VectorLayer({
         id: 2,
+        zIndex: 1000,
         title: "User Layer",
         visible: true,
         removeable: false,
