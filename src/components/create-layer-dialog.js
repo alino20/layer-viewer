@@ -6,8 +6,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Fab from "@material-ui/core/Fab";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
@@ -73,9 +71,9 @@ const CreateLayerDialog = props => {
   const [value, setValue] = React.useState(0);
   const [open, setOpen] = React.useState(false);
   const [layer, setLayer] = React.useState({
-      url: "http://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv",
-      layers: "gebco_latest",
-      projection:'EPSG:4326'
+    url:
+      "http://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv",
+    layers: "gebco_latest"
   });
 
   function handleClickOpen() {
@@ -94,9 +92,8 @@ const CreateLayerDialog = props => {
         title: layer.layers,
         removeable: true,
         source: new TileWMS({
-          url:layer.url,
-          params: { layers: layer.layers , TILED: true },
-          projection: layer.projection,
+          url: layer.url,
+          params: { layers: layer.layers, TILED: true },
           serverType: "geoserver"
           // Countries have transparency, so do not fade tiles:
         })
@@ -156,6 +153,8 @@ const CreateLayerDialog = props => {
               value={layer.url}
               onChange={handleTextChange("url")}
             />
+          </DialogContent>
+          <DialogContent>
             <DialogContentText>WMS Layers</DialogContentText>
             <TextField
               autoFocus
@@ -167,19 +166,6 @@ const CreateLayerDialog = props => {
               value={layer.layers}
               onChange={handleTextChange("layers")}
             />
-            <DialogContentText>Projection</DialogContentText>
-            <Select
-              value={layer.projection}
-              onChange={handleTextChange("projection")}
-              inputProps={{
-                name: "projection",
-                id: "projection"
-              }}
-              fullWidth
-            >
-              <MenuItem value={'EPSG:4326'}>EPSG:4326</MenuItem>
-              <MenuItem value={'EPSG:3857'}>EPSG:3857</MenuItem>
-            </Select>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">
