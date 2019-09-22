@@ -1,48 +1,16 @@
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Fab from "@material-ui/core/Fab";
-import { makeStyles } from "@material-ui/core/styles";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import React, { Fragment, useState } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { addLayer } from "../actions/actions-layer";
-import PaletteIcon from "@material-ui/icons/Palette";
-import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import PaletteIcon from "@material-ui/icons/Palette";
 import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style.js";
+import React, { Fragment, useState } from "react";
 import { isArray } from "util";
-
-const useStyles = makeStyles(theme => ({
-  fab: {
-    position: "absolute",
-    bottom: theme.spacing(2),
-    right: theme.spacing(2)
-  },
-  container: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200
-  },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200
-  }
-}));
 
 const StyleDialog = props => {
   const [open, setOpen] = useState(false);
