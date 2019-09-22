@@ -1,8 +1,13 @@
 import Point from "ol/geom/Point";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
 import { OSM, Vector as VectorSource } from "ol/source.js";
-import { Circle as CircleStyle, Fill, Style } from "ol/style.js";
-import { ADD_LAYER, LOAD_LAYER, REMOVE_LAYER, TOGGLE_LAYER } from "../actions/actions-layer";
+import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style.js";
+import {
+  ADD_LAYER,
+  LOAD_LAYER,
+  REMOVE_LAYER,
+  TOGGLE_LAYER
+} from "../actions/actions-layer";
 
 export default function(state = null, action) {
   if (state === null) {
@@ -25,17 +30,23 @@ export default function(state = null, action) {
           features: []
         }),
         style: new Style({
+          fill: new Fill({
+            color: "red"
+          }),
+          stroke: new Stroke({
+            color: "blue",
+            width: 2
+          }),
           image: new CircleStyle({
             radius: 5,
             fill: new Fill({
               color: "red"
+            }),
+            stroke: new Stroke({
+              color: "blue",
+              width: 2
             })
-          }),
-          geometry: function(feature) {
-            // return the coordinates of the first ring of the polygon
-            var coordinates = feature.getGeometry().getCoordinates();
-            return new Point(coordinates);
-          }
+          })
         })
       })
     ];

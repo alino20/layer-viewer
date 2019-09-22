@@ -7,6 +7,7 @@ import FullScreenIcon from "@material-ui/icons/Fullscreen";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import React from "react";
 import { Vector as VectorLayer } from "ol/layer.js";
+import StyleDialog from "../components/style-dialog";
 
 const ITEM_HEIGHT = 48;
 
@@ -41,7 +42,6 @@ export default function LayerMenu(props) {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 3,
             width: 200
           }
         }}
@@ -69,6 +69,9 @@ export default function LayerMenu(props) {
           <FullScreenIcon />
           Zoom
         </MenuItem>
+        {props.layer instanceof VectorLayer && (
+          <StyleDialog handleClose={handleClose} layer={props.layer} />
+        )}
         {props.layer.get("removeable") && (
           <MenuItem
             onClick={() => {

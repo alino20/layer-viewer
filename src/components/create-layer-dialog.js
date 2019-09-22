@@ -107,7 +107,6 @@ const CreateLayerDialog = props => {
 
   const handleTextChange = name => event => {
     setLayer({ ...layer, [name]: event.target.value });
-    console.log(layer);
   };
 
   return (
