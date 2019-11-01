@@ -9,23 +9,8 @@ html, body, #app, #app>div, .file-drop-target, .map-view{
 body {
   background-color: #fefefe;
   text-align: center;
+}
 
-  // .navbar {
-  //   background: #21374b;
-  //   color: #e7dacb;
-  //   height: 50px;
-  // }
-
-  // .navbar-item  * {
-  //   color: #e7dacb;
-  // }
-
-  // h1 {
-  //   font-size: 40px;
-  //   margin-top: 30px;
-  // }
-
-  // .container {
-  //   background-color: aqua;
-  // }
+.ol-layers{
+  width: auto !important;
 }

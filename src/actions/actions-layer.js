@@ -2,6 +2,7 @@ import GeoJSON from "ol/format/GeoJSON.js";
 import { Vector as VectorLayer } from "ol/layer.js";
 import { Vector as VectorSource } from "ol/source.js";
 import shp from "shpjs";
+import WKT from "ol/format/WKT";
 
 export const LOAD_LAYER = "LOAD_LAYER";
 export const CREATE_LAYER = "CREATE_LAYER";
@@ -33,6 +34,12 @@ export function createLayer(files, event) {
               features: new GeoJSON().readFeatures(geoJSON, {
                 featureProjection: "EPSG:3857"
               })
+            });
+
+            var wktWriter = new WKT();
+            new GeoJSON().readFeatures(geoJSON).forEach((feature, index)=>{
+              let clickedPointWkt = wktWriter.writeGeometry(feature.getGeometry());
+              console.log(clickedPointWkt);
             });
 
             return new VectorLayer({

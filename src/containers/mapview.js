@@ -1,5 +1,5 @@
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import { Map, View } from "ol";
 import Feature from "ol/Feature";
 import WKT from "ol/format/WKT";
@@ -12,8 +12,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { createLayer, zoomToExtent } from "../actions/actions-layer";
 import CreateLayerDialog from "../components/create-layer-dialog";
-
-
 
 const MapView = props => {
   const [map, setMap] = useState(null);
@@ -45,7 +43,7 @@ const MapView = props => {
           center: [-11718716.28195593, 4869217.172379018], //Boulder, CO
           zoom: 13,
           minZoom: 2,
-          extent: [-20026376.39, -20048966.1, 20026376.39, 20048966.1],
+          extent: [-20026376.39, -20048966.1, 20026376.39, 20048966.1]
         })
       })
     );
@@ -94,12 +92,7 @@ const MapView = props => {
           {" "}
         </div>
       </FileDrop>
-    
-        {/* <Fab aria-label={"Add"} className={classes.fab} color={'primary'}>
-          <AddIcon/>
-        </Fab> */}
-
-        <CreateLayerDialog></CreateLayerDialog>
+      <CreateLayerDialog></CreateLayerDialog>
     </Paper>
   );
 };
