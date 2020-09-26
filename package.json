@@ -18,24 +18,24 @@
     "url": "https://github.com/alino20/layer-viewer.git"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.2",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "electron": "^6.1.12",
     "gh-pages": "^2.2.0",
-    "next": "^9.4.4",
+    "next": "^9.5.3",
     "node-sass": "^4.14.1",
-    "ol": "^6.3.1",
+    "ol": "^6.4.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-file-drop": "^0.2.8",
-    "react-redux": "^7.2.0",
+    "react-redux": "^7.2.1",
     "react-swipeable-views": "^0.13.9",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "shpjs": "^3.5.0"
+    "shpjs": "^3.6.0"
   },
   "devDependencies": {
     "@types/shpjs": "^3.4.0",
