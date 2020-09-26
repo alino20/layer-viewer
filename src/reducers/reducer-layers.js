@@ -1,24 +1,26 @@
 import Point from "ol/geom/Point";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
-import { OSM, Vector as VectorSource } from "ol/source.js";
+import { XYZ, Vector as VectorSource } from "ol/source.js";
 import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style.js";
 import {
   ADD_LAYER,
   LOAD_LAYER,
   REMOVE_LAYER,
-  TOGGLE_LAYER
+  TOGGLE_LAYER,
 } from "../actions/actions-layer";
 
-export default function(state = null, action) {
+export default function (state = null, action) {
   if (state === null) {
     return [
       new TileLayer({
         id: 1,
         visible: true,
-        source: new OSM(),
+        source: new XYZ({
+          url: "https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        }),
         title: "OSM",
         removeable: false,
-        extent: [-20026376.39, -20048966.1, 20026376.39, 20048966.1]
+        extent: [-20026376.39, -20048966.1, 20026376.39, 20048966.1],
       }),
       new VectorLayer({
         id: 2,
@@ -27,28 +29,28 @@ export default function(state = null, action) {
         visible: true,
         removeable: false,
         source: new VectorSource({
-          features: []
+          features: [],
         }),
         style: new Style({
           fill: new Fill({
-            color: "red"
+            color: "red",
           }),
           stroke: new Stroke({
             color: "blue",
-            width: 2
+            width: 2,
           }),
           image: new CircleStyle({
             radius: 5,
             fill: new Fill({
-              color: "red"
+              color: "red",
             }),
             stroke: new Stroke({
               color: "blue",
-              width: 2
-            })
-          })
-        })
-      })
+              width: 2,
+            }),
+          }),
+        }),
+      }),
     ];
   }
 
